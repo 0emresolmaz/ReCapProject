@@ -33,10 +33,10 @@ set identity_insert Colors on -- bu kod ile id eklemeyi açtık.
 --her seferinde aynı sorguyu çalıştıracağımız için insert işlemi için Store Procedure yapalım
 create procedure insertColor @id int, @colorName nvarchar(30)
 AS
-insert Colors(ColorID,Name) values (@id,@colorName) 
+insert Colors(Name) values (@colorName) 
 GO
 
-exec insertColor @id =6, @colorName ='Yellow' --burada id değerleri ve renk değerleri girip tabloya insert ediyoruz.
+exec insertColor @colorName ='Yellow' --burada renk değerleri girip tabloya insert ediyoruz.
 
 select * from Colors
 
