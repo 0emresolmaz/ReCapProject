@@ -26,7 +26,7 @@ create table Cars(
 
 --colors tablosunu dolduralım
 
-insert Colors(ColorID,Name) values (1,'Blue') --ilk çalışmada hata verdik. id insert edemiyoruz. 
+insert Colors(ColorID,Name) values (1,'Blue') --ilk çalışmada hata verdi. id insert edemiyoruz. 
 
 set identity_insert Colors on -- bu kod ile id eklemeyi açtık.
 
