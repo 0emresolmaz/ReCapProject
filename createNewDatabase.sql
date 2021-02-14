@@ -31,7 +31,7 @@ insert Colors(ColorID,Name) values (1,'Blue') --ilk çalışmada hata verdi. id 
 set identity_insert Colors on -- bu kod ile id eklemeyi açtık.
 
 --her seferinde aynı sorguyu çalıştıracağımız için insert işlemi için Store Procedure yapalım
-create procedure insertColor @id int, @colorName nvarchar(30)
+create procedure insertColor @colorName nvarchar(30)
 AS
 insert Colors(Name) values (@colorName) 
 GO
