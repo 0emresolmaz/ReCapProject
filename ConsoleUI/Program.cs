@@ -14,7 +14,7 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
             Console.WriteLine("Color\tYear\tBrand\tDescription\tDaily Price\n");
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine(car.ColorName + "\t" + car.ModelYear + "\t" + car.BrandName + "\t" + car.Description + "\t\t" + car.DailyPrice);
             }
@@ -33,10 +33,10 @@ namespace ConsoleUI
             void ListCar()
             {
                 Console.WriteLine("Color\tYear\tBrand\tDescription\tDaily Price\n");
-                foreach (var car in carManager.GetAll())
+                foreach (var car in carManager.GetAll().Data)
                 {
-                    Console.WriteLine(colorManager.GetById(car.ColorId).Name + "\t"
-                        + car.ModelYear + "\t" + brandManager.GetById(car.BrandId).BrandName + "\t"
+                    Console.WriteLine(colorManager.GetById(car.ColorId).Data.Name + "\t"
+                        + car.ModelYear + "\t" + brandManager.GetById(car.BrandId).Data.BrandName + "\t"
                         + car.Description + "\t\t" + car.DailyPrice + " TL"
                         );
                 }
@@ -45,20 +45,20 @@ namespace ConsoleUI
             // Brand idsi =2 olan arabalar
             Console.WriteLine("--------------------Brand id =2-------------------------");
             Console.WriteLine("BrandID\tColor\tYear\tBrand\tDescription\tDaily Price\n");
-            foreach (var car in carManager.GetCarsByBrandId(2))
+            foreach (var car in carManager.GetCarsByBrandId(2).Data)
             {
-                Console.WriteLine(car.BrandId + "\t" + colorManager.GetById(car.ColorId).Name + "\t"
-                    + car.ModelYear + "\t" + brandManager.GetById(car.BrandId).BrandName + "\t" + car.Description + "\t\t" + car.DailyPrice);
+                Console.WriteLine(car.BrandId + "\t" + colorManager.GetById(car.ColorId).Data.Name + "\t"
+                    + car.ModelYear + "\t" + brandManager.GetById(car.BrandId).Data.BrandName + "\t" + car.Description + "\t\t" + car.DailyPrice);
             }
 
             // Color idsi = 3 olan arabalar
             Console.WriteLine("\n--------------------Color id =3--------------------------");
             Console.WriteLine("ColorID\tColor\tYear\tBrand\tDescription\tDaily Price\n");
 
-            foreach (var car in carManager.GetCarsByColorId(3))
+            foreach (var car in carManager.GetCarsByColorId(3).Data)
             {
-                Console.WriteLine(car.ColorId + "\t" + colorManager.GetById(car.ColorId).Name + "\t"
-                                    + car.ModelYear + "\t" + brandManager.GetById(car.BrandId).BrandName + "\t" + car.Description + "\t\t" + car.DailyPrice);
+                Console.WriteLine(car.ColorId + "\t" + colorManager.GetById(car.ColorId).Data.Name + "\t"
+                                    + car.ModelYear + "\t" + brandManager.GetById(car.BrandId).Data.BrandName + "\t" + car.Description + "\t\t" + car.DailyPrice);
             }
 
             carManager.Add(new Car() { ColorId = 5, ModelYear = 1995, BrandId = 4, Description = "Lpg", DailyPrice = -50 });
