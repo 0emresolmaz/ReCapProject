@@ -9,7 +9,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfColorDal : EfEntityRepotsitoryBase<Color, RentingCarContext>, IColorDal
+    public class EfColorDal : EfEntityRepositoryBase<Color, RentingCarContext>, IColorDal
     {
 
     }

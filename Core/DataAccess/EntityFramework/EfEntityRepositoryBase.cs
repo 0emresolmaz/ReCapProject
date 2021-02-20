@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Core.DataAccess.EntityFramework
 {
-    public class EfEntityRepotsitoryBase<TEntity, TContext> : IEntityRepository<TEntity>
+    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
          where TEntity : class, IEntity, new() //IEntity'den newlenebilir bir class olmalı şartı
         where TContext : DbContext, new()
     {

@@ -11,6 +11,46 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             //BeforeHomeWorkTest();
+            //BeforeHomeWorkTest2();
+            //CustomerAdding();   //customer eklemeli
+                
+            Rental();
+
+        }
+
+        private static void Rental()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            //Burada teslim edilmeyen bir arabanın kiralanması işlemini denedik.
+            rentalManager.Add(new Rental { CustomerId = 5, CarId = 8, RentDate = DateTime.Now, ReturnDate = null });
+
+            //Burada eldeki araçlardan birisini kiraladık.
+
+            rentalManager.Add(new Rental { CustomerId = 2, CarId = 2, RentDate = DateTime.Now, ReturnDate = null });
+
+            Console.WriteLine("CarId\tFirstname\tLastName\tCompany Name\tBrand\tColor\tRentDate\tReturnDate");
+            foreach (var rental in rentalManager.GetRentalDetails())
+            {
+                Console.WriteLine(rental.CarId + "\t" + rental.FirstName + "\t\t" + rental.LastName + "\t\t" + rental.CompanyName + "\t"
+                    + rental.CarBrand + "\t" + rental.CarColor + "\t" + rental.RentDate + "\t" + rental.ReturnDate);
+            }
+        }
+
+        private static void CustomerAdding()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            customerManager.Add(new Customer { UserId = 5, CompanyName = "Beşiktaş" });
+            Console.WriteLine("Firstname\tLastName\tCompany Name\t\tEmail\n");
+            foreach (var customer in customerManager.GetCarDetails().Data)
+            {
+                Console.WriteLine(customer.FirstName + "\t\t" + customer.LastName + "\t\t" + customer.CompanyName + "\t"
+                    + customer.Email);
+            }
+        }
+
+        private static void BeforeHomeWorkTest2()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
             Console.WriteLine("Color\tYear\tBrand\tDescription\tDaily Price\n");
 
