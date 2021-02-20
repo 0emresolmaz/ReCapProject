@@ -85,3 +85,11 @@ Cars.BrandID = Brands.BrandID
 --tablo colomn ismi güncelleme
 EXEC sp_RENAME 'table_name.old_name', 'new_name', 'COLUMN'
 EXEC sp_rename 'Cars.CarID', 'ID', 'COLUMN'  
+
+
+--Var olan bir coloum u foreign key yapma
+--BrandID artık FK oldu.
+ALTER TABLE Cars
+ADD FOREIGN KEY (BrandID)
+REFERENCES Brands(BrandID)
+
