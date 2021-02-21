@@ -12,5 +12,8 @@ namespace Business.Abstract
         IResult Add(Customer customer);
         IDataResult<List<Customer>> GetAll();
         IDataResult<List<CustomerDetailDto>> GetCarDetails();
+        IDataResult<Customer> GetById(int id);
+
+        
     }
 }

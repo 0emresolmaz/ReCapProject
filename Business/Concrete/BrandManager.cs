@@ -23,14 +23,14 @@ namespace Business.Concrete
             {
                 _brandDal.Add(brand);
                 Console.WriteLine(brand.BrandName + " " + Messages.BrandAdded);
-                return new SuccessDataResult<Brand>(brand, Messages.BrandAdded);
+                return new SuccessResult(Messages.BrandAdded);
 
                 //Console.WriteLine("Araba modeli: {0} başarıyla eklendi\n", brand.BrandName);
             }
             else
             {
                 Console.WriteLine(brand.BrandName + " " + Messages.BrandNameValid);
-                return new ErrorDataResult<Brand>(brand, Messages.BrandNameValid);
+                return new ErrorResult(Messages.BrandNameValid);
                 //Console.WriteLine("Araba modeli: {0} en az 2 karakter olmalıdır.\n",brand.BrandName);
             }
         }
