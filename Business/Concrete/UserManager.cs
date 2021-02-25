@@ -26,7 +26,7 @@ namespace Business.Concrete
 
         public IDataResult<User> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<User>(_userDal.Get(p => p.Id == id));
         }
 
         IDataResult<List<User>> IUserService.GetAll()
