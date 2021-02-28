@@ -20,5 +20,6 @@ namespace Business.Constants
         public static string ColorAdded ="Renk eklendi.";
         public static string CarImageAdded ="Araba resmi eklendi";
         public static string CarImageLimitExceded ="Bir arabanın en fazla 5 resmi olabilir";
+        public static string CarImageDeleted ="Araba resmi silindi";
     }
 }

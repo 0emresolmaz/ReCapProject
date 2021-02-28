@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.File;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -48,25 +49,28 @@ namespace WebAPI.Controllers
 
         public IActionResult Add([FromForm(Name = "Image")] IFormFile formFile, [FromForm] CarImage carImage)
         {
-            string imagePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\WebAPI\Resource\Images"));
-            var filepath = Path.Combine(imagePath, Guid.NewGuid().ToString() + ".jpg");
-
-            if (formFile!=null)
-            {
-                using (var fileStream = new FileStream(filepath, FileMode.Create))
-                {
-                    formFile.CopyTo(fileStream);
-                }
- 
-                carImage.ImagePath = filepath;
-            }
-            else
-            {
-                carImage.ImagePath = @"C:\Users\Ssoft\Source\Repos\ReCapProject\WebAPI\Resource\Images\default.png";
-            }
+             carImage.ImagePath =FileOperations.Add(formFile);
 
             carImage.Date = DateTime.Now;
             var result = _carImageService.Add(carImage);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+        [HttpDelete("delete")]
+        public IActionResult Delete([FromForm(Name = "Id")] int Id, [FromForm] CarImage carImage)
+
+        {
+            var path = _carImageService.Get(Id).Data.ImagePath;
+
+            FileOperations.Delete(path);
+
+            var result = _carImageService.Delete(_carImageService.Get(Id).Data);
 
             if (result.Success)
             {
