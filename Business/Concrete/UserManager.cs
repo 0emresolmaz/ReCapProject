@@ -32,12 +32,12 @@ namespace Business.Concrete
 
         public User GetByMail(string email)
         {
-            throw new NotImplementedException();
+            return _userDal.Get(u => u.Email == email);
         }
 
         public List<OperationClaim> GetClaims(User user)
         {
-            return null;
+            return _userDal.GetClaims(user);
         }
 
         IDataResult<List<User>> IUserService.GetAll()
